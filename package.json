@@ -1,0 +1,19 @@
+{
+  "name": "serverless-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LorepRocks/serverless-backend.git"
+  },
+  "author": "Lorena Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LorepRocks/serverless-backend/issues"
+  },
+  "homepage": "https://github.com/LorepRocks/serverless-backend#readme"
+}
