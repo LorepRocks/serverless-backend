@@ -1,0 +1,22 @@
+[
+    {"id": 1, "name": "Product 1", "price": "50.99"},
+    {"id": 2, "name": "Product 2", "price": "45.99"},
+    {"id": 3, "name": "Product 3", "price": "35.99"},
+    {"id": 4, "name": "Product 4", "price": "30.99"},
+    {"id": 5, "name": "Product 5", "price": "29.99"},
+    {"id": 6, "name": "Product 6", "price": "27.99"},
+    {"id": 7, "name": "Product 7", "price": "25.99"},
+    {"id": 8, "name": "Product 8", "price": "23.99"},
+    {"id": 9, "name": "Product 9", "price": "20.99"},
+    {"id": 10, "name": "Product 10", "price": "80.99"},
+    {"id": 11, "name": "Product 11", "price": "74.99"},
+    {"id": 12, "name": "Product 12", "price": "71.99"},
+    {"id": 13, "name": "Product 13", "price": "69.99"},
+    {"id": 14, "name": "Product 14", "price": "65.99"},
+    {"id": 15, "name": "Product 15", "price": "63.99"},
+    {"id": 16, "name": "Product 16", "price": "60.99"},
+    {"id": 17, "name": "Product 17", "price": "58.99"},
+    {"id": 18, "name": "Product 18", "price": "53.99"},
+    {"id": 19, "name": "Product 19", "price": "51.99"},
+    {"id": 20, "name": "Product 20", "price": "19.99"}
+]

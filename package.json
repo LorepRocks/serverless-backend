@@ -1,5 +1,6 @@
 {
   "name": "serverless-backend",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/LorepRocks/serverless-backend/issues"
   },
-  "homepage": "https://github.com/LorepRocks/serverless-backend#readme"
+  "homepage": "https://github.com/LorepRocks/serverless-backend#readme",
+  "devDependencies": {
+    "serverless-auto-swagger": "^2.9.2"
+  }
 }
