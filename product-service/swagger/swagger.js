@@ -71,19 +71,24 @@
           "title": "Product.id",
           "type": "number"
         },
-        "name": {
-          "title": "Product.name",
+        "title": {
+          "title": "Product.title",
           "type": "string"
         },
         "price": {
           "title": "Product.price",
           "type": "string"
+        },
+        "description": {
+          "title": "Product.description",
+          "type": "string"
         }
       },
       "required": [
         "id",
-        "name",
-        "price"
+        "title",
+        "price",
+        "description"
       ],
       "additionalProperties": false,
       "title": "Product",
