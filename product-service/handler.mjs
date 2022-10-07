@@ -7,13 +7,20 @@ const corsConfig = {
 }
 
 export const getProducts = async (event) => {
-
-  const data = await getAllProducts();
-  return {
-    statusCode: 200,
-    headers: corsConfig,
-    body: JSON.stringify(data,null,2),
-  };
+  try {
+    const data = await getAllProducts();
+    return {
+      statusCode: 200,
+      headers: corsConfig,
+      body: JSON.stringify(data,null,2),
+    };
+  }catch(e) {
+    return {
+      statusCode: 500,
+      headers: corsConfig,
+      body: JSON.stringify({ message: `There was an error trying to get data - ${e}`}),
+    };
+  }
 };
 
 
