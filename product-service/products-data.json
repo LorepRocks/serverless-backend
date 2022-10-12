@@ -1,0 +1,188 @@
+{
+    "products": [
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "id": {
+                        "N": "1"
+                    },
+                    
+                    "title": {
+                        "S": "Product 1"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "50.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "id": {
+                        "N": "2"
+                    },
+                    "title": {
+                        "S": "Product 2"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "45.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "3"
+                    },
+                    "title": {
+                        "S": "Product 3"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "85.00"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+              
+                "Item": {
+                    "id": {
+                        "N": "4"
+                    },
+                    "title": {
+                        "S": "Product 4"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "9.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "5"
+                    },
+                    "title": {
+                        "S": "Product 5"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "15.78"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "6"
+                    },
+                    "title": {
+                        "S": "Product 6"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "80.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "7"
+                    },
+                    "title": {
+                        "S": "Product 7"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "48.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "8"
+                    },
+                    "title": {
+                        "S": "Product 8"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "50.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "9"
+                    },
+                    "title": {
+                        "S": "Product 9"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "34.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "N": "10"
+                    },
+                    "title": {
+                        "S": "Product 10"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "59.99"
+                    }
+                }
+            }
+        }
+    ]
+}

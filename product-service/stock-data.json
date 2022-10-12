@@ -1,0 +1,144 @@
+{
+    "stocks": [
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "1"
+                    },
+                    
+                    "count": {
+                        "N": "5"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "2"
+                    },
+                    
+                    "count": {
+                        "N": "8"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "3"
+                    },
+                    
+                    "count": {
+                        "N": "15"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "4"
+                    },
+                    
+                    "count": {
+                        "N": "7"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "5"
+                    },
+                    
+                    "count": {
+                        "N": "10"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "6"
+                    },
+                    
+                    "count": {
+                        "N": "3"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "7"
+                    },
+                    
+                    "count": {
+                        "N": "9"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "8"
+                    },
+                    
+                    "count": {
+                        "N": "12"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "9"
+                    },
+                    
+                    "count": {
+                        "N": "6"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "N": "10"
+                    },
+                    
+                    "count": {
+                        "N": "25"
+                    }
+                }
+            }
+        }
+    ]
+}

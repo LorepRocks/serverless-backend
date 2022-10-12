@@ -5,6 +5,8 @@ plugins:
   - serverless-auto-swagger
 
 custom: {
+  productTableName: products,
+  stockTableName: stocks,
   autoswagger: {
     typefiles: ['./src/types/api-types.d.ts']
   }
@@ -47,3 +49,32 @@ functions:
               description: "Product Id provided not found"
             }
           }
+
+resources:
+  Resources:
+    DynamoProductTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.productTableName}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: N
+        KeySchema: 
+          - AttributeName: id
+            KeyType: HASH
+    DynamoStockTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.stockTableName}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5 
+        AttributeDefinitions:
+          - AttributeName: product_id
+            AttributeType: N
+        KeySchema:
+          - AttributeName: product_id
+            KeyType: HASH
