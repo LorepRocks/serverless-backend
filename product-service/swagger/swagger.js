@@ -29,6 +29,29 @@
             "description": "Error returning data"
           }
         }
+      },
+      "post": {
+        "summary": "createProduct",
+        "description": "",
+        "operationId": "createProduct.post./products",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Product item created",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "500": {
+            "description": "Error creating product"
+          }
+        }
       }
     },
     "/products/{productId}": {
