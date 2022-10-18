@@ -1,50 +1,15 @@
 "use strict";
-import AWS from '/var/runtime/node_modules/aws-sdk/lib/aws.js';
+import { validateItem, scan, getProduct, getStock, put } from './utils/index.mjs' 
+import { nanoid } from 'nanoid';
 
 const corsConfig = {
   "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
   "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS 
 }
 
-const dynamo = new AWS.DynamoDB.DocumentClient();
-
-
-const scan = async (table) => {
-  const scanResults = await dynamo.scan({
-    TableName: table
-  }).promise()
-  return scanResults.Items;
-}
-
-const query = async (id) => {
-  const params = {
-    TableName: process.env.PRODUCT_TABLE_NAME,
-    KeyConditionExpression: "id = :id",
-    ExpressionAttributeValues: {
-      ":id": id,
-    }
-  }
-
-  try {
-    const data = await dynamo.query(params).promise()
-    return data.Items
-  } catch (err) {
-    return err
-  }
-}
-
-const put = async (item, table) => {
-  const putResults = await dynamo.put({
-    TableName: table,
-    Item: item
-  }).promise()
-
-  return putResults;
-}
-
-
 export const getProducts = async (event) => {
   try {
+    console.log('calling getProducts...')
     const products = await scan(process.env.PRODUCT_TABLE_NAME);
     const stocks = await scan(process.env.STOCKS_TABLE_NAME)
     const data = products?.map((product) => {
@@ -57,11 +22,11 @@ export const getProducts = async (event) => {
       headers: corsConfig,
       body: JSON.stringify(data,null,2),
     };
-  }catch(e) {
+  }catch(err) {
     return {
       statusCode: 500,
       headers: corsConfig,
-      body: JSON.stringify({ message: `There was an error trying to get data - ${e}`}),
+      body: JSON.stringify({ message: `There was an error on getProducts - ${err}`}),
     };
   }
 };
@@ -70,8 +35,13 @@ export const getProducts = async (event) => {
 export const getProductId = async (event) => {
   try {
     const productId = event.pathParameters['productId']
-    const product = await query(Number(productId));
-    if(product.length) {
+    console.log('calling getProductId with productId', productId)
+    const product = await getProduct(productId)
+    const stock = await getStock(productId)
+    const { count } = stock 
+
+    if(product) {
+      product.count = count
       return {
         statusCode: 200,
         headers: corsConfig,
@@ -88,18 +58,53 @@ export const getProductId = async (event) => {
     return {
       statusCode: 500,
       headers: corsConfig,
-      body: JSON.stringify({ message: `There was an error trying to get data - ${e}`}),
+      body: JSON.stringify({ message: `There was an error on getProductId - ${err}`}),
     };
   }
 }
 
 export const createProduct = async(event) => {
-  const { item } = event
-  const putResult = await put(item, process.env.PRODUCT_TABLE_NAME)
+  try {
+      const item = event.body ? JSON.parse(event.body) : {}
+      console.log('calling create product with item', item)
 
-  return {
-    statusCode: 200,
-    headers: corsConfig,
-    body: JSON.stringify(putResult,null,2),
-  };
+      const { isValid, error } = validateItem(item)
+
+      const productId = nanoid();
+
+      const productItem = {
+        id: productId,
+        title: item.title,
+        description: item.description,
+        price: item.price
+      }
+
+      const stockItem ={
+        product_id: productId,
+        count: item.count
+      }
+
+      if(isValid) {
+        await put(productItem, process.env.PRODUCT_TABLE_NAME)
+        await put(stockItem, process.env.STOCKS_TABLE_NAME)
+
+        return {
+          statusCode: 200,
+          headers: corsConfig,
+          body: JSON.stringify(`product with id ${productId} created!`,null,2),
+        };
+      }else {
+        return {
+          statusCode: 400,
+          headers: corsConfig,
+          body: JSON.stringify({ message: error },null,2),
+        };
+      }
+  } catch(err){
+    return {
+      statusCode: 500,
+      headers: corsConfig,
+      body: JSON.stringify(`There was an error executing createProduct - ${err}`),
+    };
+  }
 }

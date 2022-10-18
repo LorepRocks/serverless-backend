@@ -76,7 +76,7 @@ resources:
           WriteCapacityUnits: 5
         AttributeDefinitions:
           - AttributeName: id
-            AttributeType: N
+            AttributeType: S
         KeySchema: 
           - AttributeName: id
             KeyType: HASH
@@ -89,7 +89,7 @@ resources:
           WriteCapacityUnits: 5 
         AttributeDefinitions:
           - AttributeName: product_id
-            AttributeType: N
+            AttributeType: S
         KeySchema:
           - AttributeName: product_id
             KeyType: HASH
