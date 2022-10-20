@@ -5,11 +5,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "1"
+                        "S": "dfGDfjEz5sQ-OWoHtMQ5J"
                     },
                     
                     "count": {
-                        "N": "5"
+                        "N": "220"
                     }
                 }
             }
@@ -19,11 +19,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "2"
+                        "S": "02bJjdmTWof-71C9Zqjum"
                     },
                     
                     "count": {
-                        "N": "8"
+                        "N": "120"
                     }
                 }
             }
@@ -33,11 +33,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "3"
+                        "S": "CiCPDiP-klo0dEEdoJu4d"
                     },
                     
                     "count": {
-                        "N": "15"
+                        "N": "100"
                     }
                 }
             }
@@ -47,11 +47,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "4"
+                        "S": "7HZU_tJ-Olp3GVf2iuNeS"
                     },
                     
                     "count": {
-                        "N": "7"
+                        "N": "200"
                     }
                 }
             }
@@ -61,11 +61,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "5"
+                        "S": "W6fC4Gq_k1wiXNi7UKyhm"
                     },
                     
                     "count": {
-                        "N": "10"
+                        "N": "100"
                     }
                 }
             }
@@ -75,11 +75,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "6"
+                        "S": "WJ5M2uRTYRQSV3tbVhOKa"
                     },
                     
                     "count": {
-                        "N": "3"
+                        "N": "80"
                     }
                 }
             }
@@ -89,11 +89,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "7"
+                        "S": "e4Jy1X37VEv5o3UoA-Wb8"
                     },
                     
                     "count": {
-                        "N": "9"
+                        "N": "800"
                     }
                 }
             }
@@ -103,11 +103,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "8"
+                        "S": "Kqjob1qiW35nXuJ6jtS12"
                     },
                     
                     "count": {
-                        "N": "12"
+                        "N": "800"
                     }
                 }
             }
@@ -117,25 +117,11 @@
                 "Item": {
                     
                     "product_id": {
-                        "N": "9"
+                        "S": "5bIkluoJ0S5yko3fTEbuw"
                     },
                     
                     "count": {
-                        "N": "6"
-                    }
-                }
-            }
-        },
-        {
-            "PutRequest": {
-                "Item": {
-                    
-                    "product_id": {
-                        "N": "10"
-                    },
-                    
-                    "count": {
-                        "N": "25"
+                        "N": "145"
                     }
                 }
             }

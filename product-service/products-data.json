@@ -5,17 +5,17 @@
                 "Item": {
                     
                     "id": {
-                        "N": "1"
+                        "S": "dfGDfjEz5sQ-OWoHtMQ5J"
                     },
                     
                     "title": {
-                        "S": "Product 1"
+                        "S": "Ipad pro"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "50.99"
+                        "N": "1150"
                     }
                 }
             }
@@ -25,16 +25,16 @@
                 "Item": {
                     
                     "id": {
-                        "N": "2"
+                        "S": "02bJjdmTWof-71C9Zqjum"
                     },
                     "title": {
-                        "S": "Product 2"
+                        "S": "Macbook Air"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "45.99"
+                        "N": "799.99"
                     }
                 }
             }
@@ -43,16 +43,16 @@
             "PutRequest": {
                 "Item": {
                     "id": {
-                        "N": "3"
+                        "S": "CiCPDiP-klo0dEEdoJu4d"
                     },
                     "title": {
-                        "S": "Product 3"
+                        "S": "Ipad SE"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "85.00"
+                        "N": "680.99"
                     }
                 }
             }
@@ -62,16 +62,16 @@
               
                 "Item": {
                     "id": {
-                        "N": "4"
+                        "S": "7HZU_tJ-Olp3GVf2iuNeS"
                     },
                     "title": {
-                        "S": "Product 4"
+                        "S": "iphone 11"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "9.99"
+                        "N": "599.99"
                     }
                 }
             }
@@ -80,16 +80,16 @@
             "PutRequest": {
                 "Item": {
                     "id": {
-                        "N": "5"
+                        "S": "W6fC4Gq_k1wiXNi7UKyhm"
                     },
                     "title": {
-                        "S": "Product 5"
+                        "S": "Ipad "
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "15.78"
+                        "N": "580.99"
                     }
                 }
             }
@@ -98,16 +98,16 @@
             "PutRequest": {
                 "Item": {
                     "id": {
-                        "N": "6"
+                        "S": "WJ5M2uRTYRQSV3tbVhOKa"
                     },
                     "title": {
-                        "S": "Product 6"
+                        "S": "iphone XR"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "80.99"
+                        "N": "399.99"
                     }
                 }
             }
@@ -116,16 +116,16 @@
             "PutRequest": {
                 "Item": {
                     "id": {
-                        "N": "7"
+                        "S": "e4Jy1X37VEv5o3UoA-Wb8"
                     },
                     "title": {
-                        "S": "Product 7"
+                        "S": "iphone 13"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "48.99"
+                        "N": "799.99"
                     }
                 }
             }
@@ -134,16 +134,16 @@
             "PutRequest": {
                 "Item": {
                     "id": {
-                        "N": "8"
+                        "S": "Kqjob1qiW35nXuJ6jtS12"
                     },
                     "title": {
-                        "S": "Product 8"
+                        "S": "iphone 12"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "50.99"
+                        "N": "699.99"
                     }
                 }
             }
@@ -152,34 +152,16 @@
             "PutRequest": {
                 "Item": {
                     "id": {
-                        "N": "9"
+                        "S": "5bIkluoJ0S5yko3fTEbuw"
                     },
                     "title": {
-                        "S": "Product 9"
+                        "S": "iphone SE"
                     },
                     "description": {
                         "S": "product description..."
                     },
                     "price": {
-                        "N": "34.99"
-                    }
-                }
-            }
-        },
-        {
-            "PutRequest": {
-                "Item": {
-                    "id": {
-                        "N": "10"
-                    },
-                    "title": {
-                        "S": "Product 10"
-                    },
-                    "description": {
-                        "S": "product description..."
-                    },
-                    "price": {
-                        "N": "59.99"
+                        "N": "499.99"
                     }
                 }
             }
