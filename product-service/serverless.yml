@@ -15,8 +15,9 @@ custom: {
 provider:
   name: aws
   runtime: nodejs14.x
-
   stage: dev
+  httpApi:
+    cors: true
 
 functions:
   getProductList:
