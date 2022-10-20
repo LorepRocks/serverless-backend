@@ -1,0 +1,49 @@
+service: product-service
+frameworkVersion: '3'
+
+plugins:
+  - serverless-auto-swagger
+
+custom: {
+  autoswagger: {
+    typefiles: ['./src/types/api-types.d.ts']
+  }
+}
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+  stage: dev
+
+functions:
+  getProductList:
+    handler: handler.getProducts
+    events:
+      - httpApi:
+          path: /products
+          method: get
+          responseData: {
+            200: {
+              description: "Complete list of products",
+              bodyType: 'Product'
+            },
+            500: {
+              description: "Error returning data"
+            }
+          }
+  getProductsById:
+    handler: handler.getProductId
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: get
+          responseData: {
+            200: {
+              description: "Product id provided was found",
+              bodyType: 'Product'
+            },
+            404: {
+              description: "Product Id provided not found"
+            }
+          }
