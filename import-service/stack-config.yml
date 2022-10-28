@@ -1,0 +1,28 @@
+Parameters:
+  BucketName: { Type: String, Default: "import-service-bucket-l3" }
+
+Resources:  
+  AccessLogBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      AccessControl: LogDeliveryWrite
+            
+  MainBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Ref BucketName
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LoggingConfiguration:
+        DestinationBucketName: !Ref AccessLogBucket
+
+
+Outputs:
+  MainBucketName:
+    Description: Name of the main bucket
+    Value: !Ref MainBucket
+  LogBucketName:
+    Description: Name of the access log bucket
+    Value: !Ref AccessLogBucket
