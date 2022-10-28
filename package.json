@@ -19,5 +19,9 @@
   "homepage": "https://github.com/LorepRocks/serverless-backend#readme",
   "devDependencies": {
     "serverless-auto-swagger": "^2.9.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1231.0",
+    "nanoid": "^4.0.0"
   }
 }

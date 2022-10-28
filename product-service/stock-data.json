@@ -1,0 +1,130 @@
+{
+    "stocks": [
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "dfGDfjEz5sQ-OWoHtMQ5J"
+                    },
+                    
+                    "count": {
+                        "N": "220"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "02bJjdmTWof-71C9Zqjum"
+                    },
+                    
+                    "count": {
+                        "N": "120"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "CiCPDiP-klo0dEEdoJu4d"
+                    },
+                    
+                    "count": {
+                        "N": "100"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "7HZU_tJ-Olp3GVf2iuNeS"
+                    },
+                    
+                    "count": {
+                        "N": "200"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "W6fC4Gq_k1wiXNi7UKyhm"
+                    },
+                    
+                    "count": {
+                        "N": "100"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "WJ5M2uRTYRQSV3tbVhOKa"
+                    },
+                    
+                    "count": {
+                        "N": "80"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "e4Jy1X37VEv5o3UoA-Wb8"
+                    },
+                    
+                    "count": {
+                        "N": "800"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "Kqjob1qiW35nXuJ6jtS12"
+                    },
+                    
+                    "count": {
+                        "N": "800"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "product_id": {
+                        "S": "5bIkluoJ0S5yko3fTEbuw"
+                    },
+                    
+                    "count": {
+                        "N": "145"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,170 @@
+{
+    "products": [
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "id": {
+                        "S": "dfGDfjEz5sQ-OWoHtMQ5J"
+                    },
+                    
+                    "title": {
+                        "S": "Ipad pro"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "1150"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    
+                    "id": {
+                        "S": "02bJjdmTWof-71C9Zqjum"
+                    },
+                    "title": {
+                        "S": "Macbook Air"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "799.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "CiCPDiP-klo0dEEdoJu4d"
+                    },
+                    "title": {
+                        "S": "Ipad SE"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "680.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+              
+                "Item": {
+                    "id": {
+                        "S": "7HZU_tJ-Olp3GVf2iuNeS"
+                    },
+                    "title": {
+                        "S": "iphone 11"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "599.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "W6fC4Gq_k1wiXNi7UKyhm"
+                    },
+                    "title": {
+                        "S": "Ipad "
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "580.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "WJ5M2uRTYRQSV3tbVhOKa"
+                    },
+                    "title": {
+                        "S": "iphone XR"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "399.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "e4Jy1X37VEv5o3UoA-Wb8"
+                    },
+                    "title": {
+                        "S": "iphone 13"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "799.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "Kqjob1qiW35nXuJ6jtS12"
+                    },
+                    "title": {
+                        "S": "iphone 12"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "699.99"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "id": {
+                        "S": "5bIkluoJ0S5yko3fTEbuw"
+                    },
+                    "title": {
+                        "S": "iphone SE"
+                    },
+                    "description": {
+                        "S": "product description..."
+                    },
+                    "price": {
+                        "N": "499.99"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -5,6 +5,8 @@ plugins:
   - serverless-auto-swagger
 
 custom: {
+  productTableName: products,
+  stockTableName: stocks,
   autoswagger: {
     typefiles: ['./src/types/api-types.d.ts']
   }
@@ -13,8 +15,9 @@ custom: {
 provider:
   name: aws
   runtime: nodejs14.x
-
   stage: dev
+  httpApi:
+    cors: true
 
 functions:
   getProductList:
@@ -47,3 +50,47 @@ functions:
               description: "Product Id provided not found"
             }
           }
+  createProduct:
+    handler: handler.createProduct
+    events:
+      - httpApi:
+          path: /products
+          method: post
+          responseData: {
+            200: {
+              description: "Product item created",
+              bodyType: 'Product'
+            },
+            500: {
+              description: "Error creating product"
+            }
+          }
+
+resources:
+  Resources:
+    DynamoProductTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.productTableName}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema: 
+          - AttributeName: id
+            KeyType: HASH
+    DynamoStockTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.stockTableName}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5 
+        AttributeDefinitions:
+          - AttributeName: product_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: product_id
+            KeyType: HASH
