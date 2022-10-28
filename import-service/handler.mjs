@@ -5,7 +5,6 @@ const REGION = "us-east-1";
 const s3Client = new S3Client({ region: REGION });
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import fetch from "node-fetch";
 
 const corsConfig = {
   "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
@@ -19,7 +18,6 @@ export const importFile = async (event) => {
   const bucketParams = {
     Bucket: BUCKET,
     Key: `uploaded/${fileName}`,
-    Body: "BODY",
     ContentType: 'text/csv',
   }
   try{
