@@ -20,6 +20,8 @@ provider:
   runtime: nodejs14.x
   stage: dev
   region: us-east-1
+  httpApi:
+    cors: true
   deploymentBucket:
     name: import-service-bucket-l3
   iamRoleStatements:
@@ -43,3 +45,13 @@ functions:
       - httpApi:
           path: /import
           method: get
+  importFileParser:
+    handler: handler.fileParser
+    events:
+      - s3:
+          bucket: import-service-bucket-l3
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploaded/
+          existing: true
+
