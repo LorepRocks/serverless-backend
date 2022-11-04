@@ -1,0 +1,57 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: import-service
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+  httpApi:
+    cors: true
+  deploymentBucket:
+    name: import-service-bucket-l3
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: "s3:ListBucket"
+      Resource:
+        - "arn:aws:s3:::import-service-bucket-l3"
+    - Effect: "Allow"
+      Action: 
+        - "s3:*"
+      Resource:
+        - "arn:aws:s3:::import-service-bucket-l3/*"
+
+plugins:
+  - serverless-deployment-bucket
+
+functions:
+  importProductsFile:
+    handler: handler.importFile
+    events:
+      - httpApi:
+          path: /import
+          method: get
+  importFileParser:
+    handler: handler.fileParser
+    events:
+      - s3:
+          bucket: import-service-bucket-l3
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: uploaded/
+          existing: true
+
