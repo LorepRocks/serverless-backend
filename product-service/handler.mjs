@@ -1,7 +1,10 @@
 "use strict";
 import { validateItem, scan, getProduct, getStock, put } from './utils/index.mjs' 
 import { nanoid } from 'nanoid';
+import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
 
+
+const REGION = "us-east-1";
 const corsConfig = {
   "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
   "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS 
@@ -107,4 +110,49 @@ export const createProduct = async(event) => {
       body: JSON.stringify(`There was an error executing createProduct - ${err}`),
     };
   }
+}
+
+export const catalogBatchProcess = async(event) => {
+  const products = event.Records.map(({body}) => body)
+  const ddbClient = new DynamoDBClient({ region: REGION });
+
+  console.log('__products',products)
+
+
+  const productId = nanoid();
+
+  const params = {
+    TableName: process.env.PRODUCT_TABLE_NAME,
+  };
+
+  do {
+    const product = products.shift()
+    const item = product.split(',')
+
+    console.log('___item processed', item)
+    params.Item = {
+      id: {S: productId},
+      title: { S: item[0]},
+      description: { S: item[1]} ,
+      price: { N: item[2]}
+    }
+
+    try{
+      const data = await ddbClient.send(new PutItemCommand(params));
+      console.log('___data',data)
+    }catch(err){
+      console.log('__err', err)
+    }
+
+
+
+  }while(products.length >= 1)
+
+
+  return {
+    statusCode: 400,
+    headers: corsConfig,
+    body: JSON.stringify({ message: "Hello catalogBatch" },null,2),
+  };
+
 }

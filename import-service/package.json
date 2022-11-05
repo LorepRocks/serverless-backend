@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.198.0",
+    "@aws-sdk/client-sqs": "^3.202.0",
     "@aws-sdk/s3-request-presigner": "^3.198.0",
     "aws-sdk": "^2.1242.0",
     "csv": "^6.2.1",
+    "nanoid": "^4.0.0",
     "node-fetch": "^3.2.10",
     "serverless-deployment-bucket": "^1.6.0"
   }

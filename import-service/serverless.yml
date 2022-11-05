@@ -34,6 +34,11 @@ provider:
         - "s3:*"
       Resource:
         - "arn:aws:s3:::import-service-bucket-l3/*"
+    - Effect: "Allow"
+      Action:
+        - "sqs:*"
+      Resource: 
+        - "arn:aws:sqs:us-east-1:949025825036:catalogItemsQueue.fifo"
 
 plugins:
   - serverless-deployment-bucket
