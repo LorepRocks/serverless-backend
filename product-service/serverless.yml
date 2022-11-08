@@ -41,6 +41,10 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - "arn:aws:dynamodb:us-east-1:949025825036:table/stocks"
+    - Effect: "Allow"
+      Action: "sns:*"
+      Resource: 
+        Ref: SNSTopic
 
 functions:
   getProductList:
@@ -133,3 +137,14 @@ resources:
      Properties:
        QueueName: catalogItemsQueue.fifo
        FifoQueue: true
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+       TopicName: createProductTopic
+    SNSSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: lorena_rojas@epam.com
+        Protocol: email
+        TopicArn: 
+          Ref: SNSTopic

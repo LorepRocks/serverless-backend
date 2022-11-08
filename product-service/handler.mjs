@@ -2,9 +2,11 @@
 import { validateItem, scan, getProduct, getStock, put } from './utils/index.mjs' 
 import { nanoid } from 'nanoid';
 import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import  { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
 
 
 const REGION = "us-east-1";
+const snsClient = new SNSClient({ region: REGION });
 const corsConfig = {
   "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
   "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS 
@@ -115,21 +117,21 @@ export const createProduct = async(event) => {
 export const catalogBatchProcess = async(event) => {
   const products = event.Records.map(({body}) => body)
   const ddbClient = new DynamoDBClient({ region: REGION });
-
-  console.log('__products',products)
-
-
-  const productId = nanoid();
+  const batchProducts = []
 
   const params = {
     TableName: process.env.PRODUCT_TABLE_NAME,
   };
 
+  const paramsStock = {
+    TableName: process.env.STOCK_TABLE_NAME,
+  }
+
   do {
     const product = products.shift()
     const item = product.split(',')
-
-    console.log('___item processed', item)
+    const productId = nanoid();
+    
     params.Item = {
       id: {S: productId},
       title: { S: item[0]},
@@ -137,22 +139,42 @@ export const catalogBatchProcess = async(event) => {
       price: { N: item[2]}
     }
 
-    try{
-      const data = await ddbClient.send(new PutItemCommand(params));
-      console.log('___data',data)
-    }catch(err){
-      console.log('__err', err)
+    paramsStock.Item = {
+      product_id: {S: productId},
+      count: {S: item[3]}
     }
 
-
-
+    try{  
+      await ddbClient.send(new PutItemCommand(params));
+      //creating stock item
+      await ddbClient.send(new PutItemCommand(paramsStock));
+      batchProducts.push(params.Item)
+      console.log(`product ${JSON.stringify(params.Item)} added to db successfully`)
+    }catch(err){
+      console.log(`there was an error trying to create product ${JSON.stringify(params.Item)} in the db`)
+    }
   }while(products.length >= 1)
+
+  //sns
+
+  const snsParams = {
+    Message: `Following products were created on DynamoDB ${process.env.PRODUCT_TABLE_NAME} table.
+    ${JSON.stringify(batchProducts)}`,
+    TopicArn: process.env.SNS_TOPIC
+  };
+
+  try {
+    await snsClient.send(new PublishCommand(snsParams));
+    console.log("Email send!");
+  }catch(err) {
+    console.log('there was an error trying to send email', err)
+  }
 
 
   return {
-    statusCode: 400,
+    statusCode: 200,
     headers: corsConfig,
-    body: JSON.stringify({ message: "Hello catalogBatch" },null,2),
+    body: JSON.stringify({ message: "catalogBatchProcess executed successfully" },null,2),
   };
 
 }
