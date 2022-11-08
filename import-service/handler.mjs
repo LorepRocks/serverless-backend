@@ -45,9 +45,6 @@ export const importFile = async (event) => {
 }
 
 const publish = async (data) => {
-
-      console.log('__data received', data)
-  
       const params = {
         MessageBody: data.toString(),
         QueueUrl: process.env.SQS_URL,
