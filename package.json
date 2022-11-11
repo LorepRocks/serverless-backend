@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/LorepRocks/serverless-backend#readme",
   "devDependencies": {
-    "serverless-auto-swagger": "^2.9.2"
+    "serverless-auto-swagger": "^2.9.2",
+    "serverless-dotenv-plugin": "^4.0.2"
   },
   "dependencies": {
     "aws-sdk": "^2.1231.0",
