@@ -18,6 +18,33 @@ provider:
   stage: dev
   httpApi:
     cors: true
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: 
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 
+        - "arn:aws:dynamodb:us-east-1:949025825036:table/products"
+    - Effect: "Allow"
+      Action: 
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "arn:aws:dynamodb:us-east-1:949025825036:table/stocks"
+    - Effect: "Allow"
+      Action: "sns:*"
+      Resource: 
+        Ref: SNSTopic
 
 functions:
   getProductList:
@@ -65,6 +92,17 @@ functions:
               description: "Error creating product"
             }
           }
+  catalogBatchProcess:
+    handler: handler.catalogBatchProcess
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - catalogItemsQueue
+              - Arn
+          batchSize: 5
+          functionResponseType: ReportBatchItemFailures
+
 
 resources:
   Resources:
@@ -94,3 +132,19 @@ resources:
         KeySchema:
           - AttributeName: product_id
             KeyType: HASH
+    catalogItemsQueue:
+     Type: "AWS::SQS::Queue"
+     Properties:
+       QueueName: catalogItemsQueue.fifo
+       FifoQueue: true
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+       TopicName: createProductTopic
+    SNSSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: lorena_rojas@epam.com
+        Protocol: email
+        TopicArn: 
+          Ref: SNSTopic

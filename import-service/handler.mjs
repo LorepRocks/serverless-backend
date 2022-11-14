@@ -3,9 +3,12 @@
 import { S3Client , PutObjectCommand , GetObjectCommand, CopyObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { parse } from 'csv-parse'
+import  { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
+import { nanoid } from 'nanoid';
 
 const REGION = "us-east-1";
 const s3Client = new S3Client({ region: REGION });
+const sqsClient = new SQSClient({ region: REGION });
 
 const corsConfig = {
   "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
@@ -41,10 +44,25 @@ export const importFile = async (event) => {
   }
 }
 
+const publish = async (data) => {
+      const params = {
+        MessageBody: data.toString(),
+        QueueUrl: process.env.SQS_URL,
+        MessageGroupId: 'catalogItemsQueue',
+        MessageDeduplicationId: nanoid()
+      }
+      
+      const resp = await sqsClient.send(new SendMessageCommand(params));
+      console.log("Success, message sent. MessageID:", resp.MessageId);
+
+}
+
 export const fileParser = async (event) => {
   const bucket = event.Records[0].s3.bucket.name;
   const key = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
   const copyKey = key.replace('uploaded','parsed')
+
+  
  
   const params = {
     Bucket: bucket,
@@ -63,9 +81,7 @@ export const fileParser = async (event) => {
     // Convert the ReadableStream to a string.
     data.Body.pipe(parse({
       delimiter: ','
-    })).on("data", (row) => {
-      console.log('row -->',row)
-    })
+    })).on("data", (row) => publish(row))
 
     //copy file to parsed/ folder
     const response = await s3Client.send(new CopyObjectCommand(copyParams))
