@@ -22,6 +22,11 @@ provider:
   region: us-east-1
   httpApi:
     cors: true
+    authorizers:
+      customAuthorizer:
+        type: request
+        functionArn: arn:aws:lambda:us-east-1:949025825036:function:authorization-service-dev-basicAuthorizer
+        enableSimpleResponses: true
   deploymentBucket:
     name: import-service-bucket-l3
   iamRoleStatements:
@@ -39,6 +44,11 @@ provider:
         - "sqs:*"
       Resource: 
         - "arn:aws:sqs:us-east-1:949025825036:catalogItemsQueue.fifo"
+    - Effect: "Allow"
+      Action:
+        - "lambda:InvokeFunction"
+      Resource: 
+        - arn:aws:lambda:us-east-1:949025825036:function:authorization-service-dev-basicAuthorizer
 
 plugins:
   - serverless-deployment-bucket
@@ -50,6 +60,9 @@ functions:
       - httpApi:
           path: /import
           method: get
+          authorizer:
+            name: customAuthorizer
+            type: request
   importFileParser:
     handler: handler.fileParser
     events:
